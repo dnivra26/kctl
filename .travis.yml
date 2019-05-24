@@ -23,7 +23,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: $GITHUB_TOKEN_ENV
+    secure: 6D6oNTfGXb4tdiyHsj+fOnT8UWKb5bm/5cOekB9U9M/gGofZWUfFVvY/LylV0OQvSOIXuYH97WS9crN03XsWc1HpyLmb1e/1kiXrbuomqHPKwfb7GVcqiSDHMMy+b7QU46jRbqPnfIiaIKXR0cdpGarsLqMDAFM6dq1DdWQiHk8Ek0pmzh/R3Mk/IVAhmq3Dobwwx4Vr1QYyHjxV6JG1Wv8SMoeCzVdS1XoHTUWBfAQNVcrTJkXOG+FxzpwGp8o8HidbRmEdStz4eNE7Zga+LHkAd9btC3KcyrdG9Vb6uZRWqdcfXJRAODIiNgUxzTDtaHfWkmZfQHT3hJKYSKEr/wVJz60CzOpFMC6kAw3ffqleYhHYjAJEwblT3igYgLzzjSZ04S8HSOBWHxwDZHo4FyI6N57uMny5VnuBK//c+Qna8X92WrBUxqfwost21JEe5O8NEA3FSJQ19EYBtJtyf1KhRS9p6eAJVbUzFHtV8jea/6iilo5ydy+F3eSuGc6C+PngQOOKN51ov8bsckdC+WnDim1kKdzem+RcGAGbXfrFqiyLalNBOWQbPtTW0R5qGqQ2dRJ0mdA1gWSe1bKL9ywe9T28+/w9QEb5D3dUc9WEa4hgycZ2NNUlmHLDobFuAxjpLwIPOB4UTDR4sfASzkzXR3i2nRsrjl/Ttsp43eY=
   file: '$PROJECT_NAME-$TRAVIS_TAG-$TARGET.tar.gz'
   skip_cleanup: true
   on:
