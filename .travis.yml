@@ -1,30 +1,31 @@
 language: rust
 rust:
-  - stable
+- stable
 matrix:
   fast_finish: true
   include:
-    - os: linux
-      rust: stable
-      env: TARGET=x86_64-linux
-    - os: osx
-      rust: stable
-      env: TARGET=x86_64-darwin
+  - os: linux
+    rust: stable
+    env: TARGET=x86_64-linux
+  - os: osx
+    rust: stable
+    env: TARGET=x86_64-darwin
 script:
-  - cargo build --verbose --all
-  - cargo test --verbose --all
+- cargo build --verbose --all
+- cargo test --verbose --all
 before_deploy:
-  - cargo build --release
-  - tar cvfz $PROJECT_NAME-$TRAVIS_TAG-$TARGET.tar.gz ./target/release/kctl
-  - PREVIOUS_TAG=$(git tag | tail -2 | head -1)
-  - echo 'Changelog:'
-  - git log ${PREVIOUS_TAG}..${TRAVIS_TAG} --oneline
-  - export GITHUB_RELEASE_NAME="v${TRAVIS_TAG}"
+- cargo build --release
+- tar cvfz $PROJECT_NAME-$TRAVIS_TAG-$TARGET.tar.gz ./target/release/kctl
+- PREVIOUS_TAG=$(git tag | tail -2 | head -1)
+- echo 'Changelog:'
+- git log ${PREVIOUS_TAG}..${TRAVIS_TAG} --oneline
+- export GITHUB_RELEASE_NAME="v${TRAVIS_TAG}"
 deploy:
   provider: releases
   api_key:
-    secure: 6D6oNTfGXb4tdiyHsj+fOnT8UWKb5bm/5cOekB9U9M/gGofZWUfFVvY/LylV0OQvSOIXuYH97WS9crN03XsWc1HpyLmb1e/1kiXrbuomqHPKwfb7GVcqiSDHMMy+b7QU46jRbqPnfIiaIKXR0cdpGarsLqMDAFM6dq1DdWQiHk8Ek0pmzh/R3Mk/IVAhmq3Dobwwx4Vr1QYyHjxV6JG1Wv8SMoeCzVdS1XoHTUWBfAQNVcrTJkXOG+FxzpwGp8o8HidbRmEdStz4eNE7Zga+LHkAd9btC3KcyrdG9Vb6uZRWqdcfXJRAODIiNgUxzTDtaHfWkmZfQHT3hJKYSKEr/wVJz60CzOpFMC6kAw3ffqleYhHYjAJEwblT3igYgLzzjSZ04S8HSOBWHxwDZHo4FyI6N57uMny5VnuBK//c+Qna8X92WrBUxqfwost21JEe5O8NEA3FSJQ19EYBtJtyf1KhRS9p6eAJVbUzFHtV8jea/6iilo5ydy+F3eSuGc6C+PngQOOKN51ov8bsckdC+WnDim1kKdzem+RcGAGbXfrFqiyLalNBOWQbPtTW0R5qGqQ2dRJ0mdA1gWSe1bKL9ywe9T28+/w9QEb5D3dUc9WEa4hgycZ2NNUlmHLDobFuAxjpLwIPOB4UTDR4sfASzkzXR3i2nRsrjl/Ttsp43eY=
-  file: '$PROJECT_NAME-$TRAVIS_TAG-$TARGET.tar.gz'
+    secure: Q/qx9BsLxYjKtf60S8dnHWDn4Y8sHtc3/6tqDuV5UBk+AN1rm2Gdj7xZRyN18h3FBizlm8BzumXp0IU9Xt1sUF5NKk4IMC71Ck+duChaihlfr0l3aL9zBTC1AU5x6hWI0SZ3SHEacY0KJuNSWAurRWflR3EmmJ8gjP7hyBpNz/Xd5dFVlhF5xXhyGLJOYPD3MTyovGHhApe28O8+Wm5tcmKsSZgkDVwLrt/+xkQ17pYovc95zHYsmflsTssrbSL2cOe8+GTBOEURwBMLvJDBIXREbDVKd3JfD7H777ewSDvROq3HlJlF5jw0mORNlPvrOldMoxdG9Uwa5D6hNiri6hynd1QhmEwz7hz9R3AxmUALtEDnqmOXVgpmiMJKDakGM64zM299Y0JXfN1E/y6KIw87EEepnXG5m2cGU4+0imnYw0u2wUwPlYsXTYp0e+RY0rB3R/x84+WMpnvbv+K6QKBhyhATBixcx5XWg+aEeNLCjnnnWKYtWpmdLBLswRNOoyq9JsMPmbzX0589bBvZAJwYTKtLJIQy40NPVX1BVUoHiZJqZSpv589NTffiq0izpHkpsJ5sn6zCf3EGUZ4Wx8XPVSu+LE9rRL90IUINRl3T6FlU+bpP7UnotywYbbGsGgYHLQgYJ/Yv1RcZ8XE0ZvenAkr1oRSFur2KUjpnBwc=
+  file: "'$PROJECT_NAME-$TRAVIS_TAG-$TARGET.tar.gz'"
   skip_cleanup: true
   on:
     tags: true
+    repo: dnivra26/kctl
