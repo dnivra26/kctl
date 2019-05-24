@@ -24,6 +24,11 @@ You will find the binary in /target folder
 
 
 ## Installation
+Homebrew  
+```
+brew tap alaminopu/kctl https://github.com/alaminopu/kctl.git  
+brew install kctl
+```
 
 ```
 chmod a+x kctl
