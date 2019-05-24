@@ -30,6 +30,7 @@ brew tap alaminopu/kctl https://github.com/alaminopu/kctl.git
 brew install kctl
 ```
 
+Manual
 ```
 chmod a+x kctl
 ```
